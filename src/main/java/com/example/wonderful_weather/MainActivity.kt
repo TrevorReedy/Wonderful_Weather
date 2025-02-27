@@ -44,6 +44,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     // Pass innerPadding to DefaultScreen
                     DefaultScreen(innerPadding = innerPadding)
+
                 }
             }
         }
@@ -61,6 +62,7 @@ fun DefaultScreen(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.height(12.dp))
         HeaderRow()
         DisplayWidget()
+
     }
 }
 
@@ -80,6 +82,7 @@ fun HeaderRow(
             color = Color.Black,
         style = TextStyle(
             fontSize = 25.sp
+
         )
         )
     }
@@ -109,6 +112,7 @@ fun DisplayWidget() {
         }
         Row(){
             WeatherDetails()
+
         }
     }
 }
@@ -129,6 +133,7 @@ fun TempDisplay(){
                modifier = Modifier,
                style = TextStyle(
                    fontSize = 70.sp
+
                )
                )
         Text(
@@ -136,6 +141,7 @@ fun TempDisplay(){
             modifier = Modifier,
             style = TextStyle(
                 fontSize = 16.sp
+
             )
         )
 
@@ -153,6 +159,8 @@ fun CityName(){
         style = TextStyle(
             textAlign = TextAlign.Center, // Aligns text horizontally in the center
             fontSize = 24.sp,
+
+
 
 
             )
@@ -180,6 +188,7 @@ fun WeatherDetails() {
                 text = detail,
                 modifier = Modifier.fillMaxWidth(),
                 style = TextStyle(
+
                     fontSize = 18.sp,
                     color = Color.Black
                 )
