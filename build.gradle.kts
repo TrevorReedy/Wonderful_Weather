@@ -1,8 +1,12 @@
+import org.jetbrains.kotlin.utils.addToStdlib.assertedCast
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
+
 
 android {
     namespace = "com.example.wonderful_weather"
@@ -15,7 +19,13 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        buildConfigField("String", "WEATHER_API_KEY", property("WEATHER_API_KEY") as String)
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildFeatures {
+            buildConfig = true  // Ensure BuildConfig is generated
+        }
     }
 
     buildTypes {
@@ -49,6 +59,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.runtime.livedata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -56,4 +67,18 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Kotlin Serialization
+    implementation(libs.kotlinx.serialization.json)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.kotlinx.serialization.converter)
+
+
+    // OkHttp
+    implementation(libs.okhttp)
+
+    // Coroutines
+    implementation(libs.coroutines.core)
 }
